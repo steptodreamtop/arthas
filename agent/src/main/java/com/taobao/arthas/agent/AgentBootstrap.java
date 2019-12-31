@@ -88,6 +88,15 @@ public class AgentBootstrap {
         Spy.AGENT_RESET_METHOD = AgentBootstrap.class.getMethod(RESET);
     }
 
+    /**
+     * method_name:main
+     * create_user: DaiFuyou
+     * create_date:2019/12/31
+     * create_time:16:55
+     * describe: 获取arthas-spy.jar，用bootstrapClassLoader进行加载 创建自定义的类加载器 初始化探针，加载com.taobao.arthas.core.advisor.AdviceWeaver中的methodOnBegin、methodOnReturnEnd、methodOnThrowingEnd等等方法 加载com.taobao.arthas.core.server.ArthasBootstrap，调用bind方法，启动server服务
+     * param:[args, inst]
+     * return:void
+     */
     private static synchronized void main(String args, final Instrumentation inst) {
         try {
             ps.println("Arthas server agent start...");
@@ -141,7 +150,6 @@ public class AgentBootstrap {
             throw new RuntimeException(t);
         }
     }
-
     private static void bind(Instrumentation inst, ClassLoader agentLoader, String args) throws Throwable {
         /**
          * <pre>
